@@ -13,36 +13,15 @@
 				// $('#get_all_button').click(function(){
 					$.get('/quotes/index_html', function(res) {
 
-
-						// console.log(res);
-						// var htmlstr = "";
-						// for(var i = 0;i < res['quotes'].length; i++){
-						// 	// console.log(i);
-						// 	htmlstr += "<div class = ' col-sm-4 quote'>"
-						// 	htmlstr += "<p>" + res.quotes[i]['quote'] + "</p>"
-						// 	htmlstr += "</div>"
-						// 	// htmlstr += "<h1>HIIIII</h1>";
-						$('#quotes').html(res);
-						// }
-						// $('#quotes').html(htmlstr);
-
-					// }, 'json');
-				});
+						$('#quotes').html(res);	
+					});
 				$('form').submit(function(){
 					console.log('hi');
-		          // there are three arguments that we are passing into $.post function
-		          //     1. the url we want to go to: '/quotes/create'
-		          //     2. what we want to send to this url: $(this).serialize()
-		          //            $(this) is the form and by calling .serialize() function on the form it will 
-		          //            send post data to the url with the names in the inputs as keys
-		          //     3. the function we want to run when we get a response:
-		          //            function(res) { $('#quotes').html(res) }
+		         
 		          $.post('/quotes/create', $(this).serialize(), function(res) {
 		            $('#quotes').html(res);
 		          });
-		          // We have to return false for it to be a single page application. Without it,
-		          // jQuery's submit function will refresh the page, which defeats the point of AJAX.
-		          // The form below still contains 'action' and 'method' attributes, but they are ignored.
+		         
 		          return false;
 		        });
 			});
